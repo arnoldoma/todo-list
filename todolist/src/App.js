@@ -1,20 +1,15 @@
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Col} from 'react-bootstrap';
 import FormApp from './Components/FormApp';
-import ListApp from './Components/ListApp';
 
 function App() {
   return (
     <div className="App">
-      <Container>
-        <Row>
-          <Col>
+      <Container expand="lg"> 
+        <h1 className="text-center">Aplicacion Todo List</h1>
+        <br />
+        <Col className="me-auto">
             <FormApp />
-          </Col>
-          <Col>
-            <ListApp />
-          </Col>
-
-        </Row>
+        </Col>
       </Container>
     </div>
   );
