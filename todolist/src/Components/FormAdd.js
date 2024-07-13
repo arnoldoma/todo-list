@@ -1,4 +1,3 @@
-// import { type } from '@testing-library/user-event/dist/type';
 import React from "react";
 import { Col } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
