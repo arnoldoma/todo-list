@@ -5,120 +5,16 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useForm } from 'react-hook-form';
 
-
-
-
 const FormAdd = (props) => {
 
-  //Inicializador
-  // const [tasks, dispatch] = useReducer(tasksReducer, [], init);
-  // const [editIndex, setEditIndex] = useState(null);
-  // const [editName, setEditName] = useState([]);
-
-  // Cargar las tareas
-  // useEffect(() => {
-  //   localStorage.setItem("tasks", JSON.stringify(tasks));
-  // }, [tasks]);
-
-
-  // Load editIndex
-  // useEffect(() => {
-
-  //   if (editIndex !== null) {
-  //     const tarea = tasks.filter(task => task.id === editIndex);
-
-  //     // Pasamos los valores recibidos para editar
-  //     setEditName({ id: tarea[0].id, nombre: tarea[0].nombre, categoria: tarea[0].categoria, descripcion: tarea[0].descripcion });
-  //   } else {
-  //     setEditName('');
-  //   }
-  //   // console.log(`Editando tarea ${editIndex}`);
-  // }, [editIndex, tasks]);
-
-  // Obtener registro formulario
-  // const handleOnSubmit = e => {
-
-
-  //   e.preventDefault();
-
-  //   if (!e.target.nombre.value || !e.target.categoria.value || !e.target.descripcion.value) {
-  //       return alert("Debes ingresar todos los campos.");
-  //   }
-  //   let task = {
-  //     id: new Date().getTime(),
-  //     nombre: e.target.nombre.value,
-  //     categoria: e.target.categoria.value,
-  //     descripcion: e.target.descripcion.value
-  //   };
-
-  //   const action = {
-  //     type: "create",
-  //     payload: task
-  //   }
-
-  //   dispatch(action);
-  //   // Limpiar imputs
-  //   e.target.nombre.value = ''
-  //   e.target.categoria.value = ''
-  //   e.target.descripcion.value = ''
-  // }
-
-
-  // const handleEdit = id => {
-  //   setEditIndex(id);
-  //   return alert("Necesito ayuda con el código para modificar, me da error.");
-  // }
-
-  // const saveChange = (e) => {
-  //   // console.log( id );
-  //   // const tarea = tasks.filter(task => task.id === editIndex);
-  //   let task = {
-  //     nombre: e.target.nombre.value,
-  //     categoria: e.target.categoria.value,
-  //     descripcion: e.target.descripcion.value
-  //   };
-
-  //   const action = {
-  //     type: "edit",
-  //     payload: task
-  //   };
-  //   dispatch(action);
-  // }
-
-  // pasamos las modificaciones del imput
-  // const changeManage = (e) => {
-  //   const tarea = tasks.filter(task => task.id === editIndex.id);
-  //   let task = {
-  //     id: tarea.id,
-  //     nombre: tarea.nombre,
-  //     categoria: tarea.categoria,
-  //     descripcion: tarea.descripcion
-  //   };
-  //   setEditName(task);
-  // }
-
-  // // Boton eliminar tarea
-  // const handleDelete = id => {
-  //   const action = {
-  //     type: "delete",
-  //     payload: id
-  //   };
-  //   dispatch(action);
-  // }
-
   // *** GUARDAR TAREA ***
-  // CREAMOS LA VARIABLE DEL FOMULARIO
-  const { register, handleSubmit, formState: { errors } } = useForm();
-
+  const { register, handleSubmit, reset, formState: { errors } } = useForm();
   // Obtener registro formulario
   const OnSubmit = (data, e) => {
     // Enviar Datos
-    // console.log(data)
-    // Recibimos la data para mostrar en la listad
     props.addTask(data);
     // Limpiar los campos
-    e.target.reset();
-
+    reset();
   }
   return (
     <>

@@ -5,17 +5,14 @@ import { Col } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-/**** SE CAMBIO EN EL FORM POR FUNCION USEFORM()
- * De Form de Bootstrap-react a form normal con estilo bootstrap
- * Se debio a que el hook de useForm no limpia los formularios con el event.target.reset()
- ****/
 const FormEdit = ({ editName, updateTask }) => {
 
     // CREAMOS LA VARIABLE DEL FOMULARIO
-    const { register, handleSubmit, setValue, formState: { errors }} = useForm({
+    const { register, handleSubmit, setValue, reset, formState: { errors }} = useForm({
         defaultValues: editName
     });
 
+    // Seteamos los valores al formulario
     setValue('nombre', editName.nombre);
     setValue('categoria', editName.categoria);
     setValue('descripcion', editName.descripcion);
@@ -25,7 +22,7 @@ const FormEdit = ({ editName, updateTask }) => {
         // Recibimos la data para mostrar en el formulario
         updateTask(editName.id, data);
         // Limpiar los campos
-        e.target.reset()
+        reset()
     }
 
     return (

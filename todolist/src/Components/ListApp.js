@@ -1,6 +1,4 @@
 import { Col, Table, Button } from 'react-bootstrap';
-
-
 function ListApp(props) {
     return (
         <Col>
@@ -9,7 +7,6 @@ function ListApp(props) {
             <Table striped bordered hover>
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Nombre</th>
                         <th>Categoría</th>
                         <th>Descripcion</th>
@@ -22,7 +19,6 @@ function ListApp(props) {
                         props.tasks && props.tasks.length > 0 ?
                             props.tasks.map(task => (
                                 <tr key={task.id}>
-                                    <td>{task.id}</td>
                                     <td>{task.nombre}</td>
                                     <td>{task.categoria}</td>
                                     <td>{task.descripcion}</td>

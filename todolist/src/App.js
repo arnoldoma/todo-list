@@ -37,7 +37,6 @@ function App() {
   const [editName, setEditName] = useState({
     id: null, nombre: '', categoria: '', descripcion: ''
   });
-
   useEffect(() => {
     if (editIndex !== null) {
       const task = tasks.filter(task => task.id === editIndex);
@@ -48,54 +47,37 @@ function App() {
         categoria: task[0].categoria, 
         descripcion: task[0].descripcion 
       });
-      
     } else {
       setEditName('');
     }
   }, [editIndex, tasks]);
   
-  // Opcion 2
-  // const [editing, setEditing] = useState(false);
-  // const [editName, setEditName] = useState({
-  //   id: null, nombre: '', categoria: '', descripcion: ''
-  // });
-
   // Recibmos los datos para editar y lo pasamos a setEditName
   const handleEdit = (task) => {
     // Opcion 1
     setEditIndex(task.id);
-    // Opcion 2
-    // setEditing(true);
-    // setEditName({
-    //   id: task.id,
-    //   nombre: task.nombre,
-    //   categoria: task.categoria,
-    //   descripcion: task.descripcion
-    // });
   }
   // *** ACTUALIZAR TAREA ***
   // Creamos la funcion actualizar y pasamos los parametros id y callback updateUser
   const updateTask = (id, updateTask) => {
-    //  return console.log( updateTask );
-    // Cambiamos a false el status edicion
-    // setEditing(false);
+
     let task = {
       id: id,
       nombre: updateTask.nombre,
       categoria: updateTask.categoria,
       descripcion: updateTask.descripcion
     };
+    // Enviamos a reducer
     const action = {
       type: "edit",
       payload: task
     };
     dispatch(action);
-  
     // Resetear index a editar
     setEditIndex(null)
   }
 
-  // Boton eliminar tarea
+  // *** ELIMINAR TAREA ***
   const handleDelete = id => {
     const action = {
       type: "delete",
@@ -107,7 +89,7 @@ function App() {
   return (
     <div className="App">
       <Container expand="lg">
-        <h1 className="text-center">CRUD App - TodoList - UseReducer - LocalStorage</h1>
+        <h1 className="text-center">CRUD App TodoList -  LocalStorage</h1>
         <br />
         <Row>
           {
